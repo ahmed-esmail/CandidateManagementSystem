@@ -14,7 +14,6 @@ extension.
 
 - ASP.NET Core 8
 - Entity Framework Core 8
-- Angular 15 or React 18
 - MediatR
 - AutoMapper
 - FluentValidation
