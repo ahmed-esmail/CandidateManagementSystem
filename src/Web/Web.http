@@ -1,0 +1,70 @@
+﻿# For more info on HTTP files go to https://aka.ms/vs/httpfile
+@Web_HostAddress = https://localhost:5001
+
+@Email=administrator@localhost
+@Password=Administrator1!
+@BearerToken=CfDJ8NpGCB_u4PBFkFI7eGzBXEDQpoUebAzvfg_FjMVcv-U56RRAvYGe2vG-5NIKFWHq2F2TSMGIZUgXLR53oC9NqBit4Bk46cx5mh_owSZt5axdZq5fGH4W9j2Ewo7abcTHv9L4ODefG1GJbJrcO1e_uFndPSjMtckZ_JcrwJUx_s4iODYT3OVix0-oJxeUdKSCa1maoT2QH-8mJA6RpjyJHxti58HnyNuRZsQ3H6VqA5De3Av8t1ZVjAEFSfsHcwdHfLwhPqHTfYNrlcg2tsSoSFP0QxDj0jceFlnjCKPgQ1Ihq4Yvg0ZUdIwrjG5oLwbMwT6rJBkBOMsB-4atil682L4_nd2_efR4VhFGj61yejr2fGorpb73lBBHv5W_SKw2p1kaV_3ppoydfhx2lVFKE6f2u-TOW_RDWGW5e8C2vlqoEdsB_oF1aCpqs1y3TNKRY69xwMWCAtZrWJ1YO1NhkaGiU8HMt_ZaG7UZUcOLCRoSusXpoSIW-QOiglgZkdk-LHUd9_-WNqWi1DbsAloEoxJRAc2Pu_jvJz8pfQ9eD315aA7Q9y_cvlFtjPXbscWrP9jUmPwCa0KyNA4GAIRHiol__jo0YP4CqsbSrGDBi6L1utjdNg4b6QCpf0Ll5VhT44sSp_oL5LnNIBWAc4wnYNtjypFat9NazvsTfU3B4v8XTxBkS4ketkw3yIxIS4gPB7kaiDUaLF3oZp2AUjA4LR0OFqpB5TQJI9xoqmpPpk2d3rfvPg-RfUDvHtH1c4xX090MrDmOyxmSkcqdGpPxZRhG6F3H-5x_IWVK_VOCJg2-RuoPHhppOqHjgfkRqWbP4A
+
+# POST Users Login
+POST {{Web_HostAddress}}/api/Users/Login
+Content-Type: application/json
+
+{
+  "email": "{{Email}}",
+  "password": "{{Password}}"
+}
+
+###
+
+# Post Candidates
+POST {{Web_HostAddress}}/api/Candidates
+Content-Type: application/json
+
+// CreateOrUpdateCandidateCommand
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "phoneNumber": "+1234567890",
+  "email": "john.doe@example.com",
+  "callTimeInterval": {
+    "date": "2024-05-19T00:22:08.312Z",
+    "startTime": "09:00:00",
+    "endTime": "17:00:00"
+  },
+  "linkedInUrl": "https://www.linkedin.com/in/johndoe",
+  "gitHubUrl": "https://github.com/johndoe",
+  "comment": "Experienced software developer"
+}
+###
+
+# GET Candidates with pagination
+@PageNumber1 = 1
+@PageSize1 = 10
+GET {{Web_HostAddress}}/api/Candidates?PageNumber={{PageNumber1}}&PageSize={{PageSize1}}
+
+###
+
+###
+
+# POST Users Register
+POST {{Web_HostAddress}}/api/Users/Register
+Content-Type: application/json
+
+{
+  "email": "{{Email}}",
+  "password": "{{Password}}"
+}
+
+###
+
+
+# POST Users Refresh
+POST {{Web_HostAddress}}/api/Users/Refresh
+Authorization: Bearer {{BearerToken}}
+Content-Type: application/json
+
+{
+  "refreshToken": ""
+}
+
+###
