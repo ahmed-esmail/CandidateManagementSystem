@@ -3,7 +3,7 @@
 
 @Email=administrator@localhost
 @Password=Administrator1!
-@BearerToken=CfDJ8NpGCB_u4PBFkFI7eGzBXEDQpoUebAzvfg_FjMVcv-U56RRAvYGe2vG-5NIKFWHq2F2TSMGIZUgXLR53oC9NqBit4Bk46cx5mh_owSZt5axdZq5fGH4W9j2Ewo7abcTHv9L4ODefG1GJbJrcO1e_uFndPSjMtckZ_JcrwJUx_s4iODYT3OVix0-oJxeUdKSCa1maoT2QH-8mJA6RpjyJHxti58HnyNuRZsQ3H6VqA5De3Av8t1ZVjAEFSfsHcwdHfLwhPqHTfYNrlcg2tsSoSFP0QxDj0jceFlnjCKPgQ1Ihq4Yvg0ZUdIwrjG5oLwbMwT6rJBkBOMsB-4atil682L4_nd2_efR4VhFGj61yejr2fGorpb73lBBHv5W_SKw2p1kaV_3ppoydfhx2lVFKE6f2u-TOW_RDWGW5e8C2vlqoEdsB_oF1aCpqs1y3TNKRY69xwMWCAtZrWJ1YO1NhkaGiU8HMt_ZaG7UZUcOLCRoSusXpoSIW-QOiglgZkdk-LHUd9_-WNqWi1DbsAloEoxJRAc2Pu_jvJz8pfQ9eD315aA7Q9y_cvlFtjPXbscWrP9jUmPwCa0KyNA4GAIRHiol__jo0YP4CqsbSrGDBi6L1utjdNg4b6QCpf0Ll5VhT44sSp_oL5LnNIBWAc4wnYNtjypFat9NazvsTfU3B4v8XTxBkS4ketkw3yIxIS4gPB7kaiDUaLF3oZp2AUjA4LR0OFqpB5TQJI9xoqmpPpk2d3rfvPg-RfUDvHtH1c4xX090MrDmOyxmSkcqdGpPxZRhG6F3H-5x_IWVK_VOCJg2-RuoPHhppOqHjgfkRqWbP4A
+@BearerToken=CfDJ8LqbLrgu1JZLnDVARDzZGOQdKHFy3RzJ-3HN4ESsZFClIR_fwn869PZ2RJsfUUdrK1CeoNt8cHfb5UiD-6MTrq2L0IW5w57B806BEluMIERvmrLLKh1vWtiySrP3y0z4BUhAKtvZNQx7NhHfQof_XdfVwcrn1nbuoukhfE6XrV6Kq-1hKh07ZUt3J9P6lLxNwGe5WCh2OnZcm5HouCs8umWUH9loLfLa5UMvzV2Dd5OwP-W2NIUZieylTfRelEcPnGfNluC-efJ1VwkUvIJbVrXd-lh7FXsiKnKolKYOTXrua2021KxwWTxL5npsBQE5BHtKCHBItcJvPiX5Ygo1fMk0NyrSKkPdeBR-K8wBukiNqrKhq6tAmv4hvZMf6qp6yUictfYbPRQFYaJJkMUqrt7XxL5jZDRgSB3bXPl0gs4fOyioRh6dArmJgw2_q9_m0wmaq4sk6n-74tsky-Tf6qsi2bg13AaCvx0Yf6IOAqqmpXuSNJ4pz4Ctfc4feam4OHKx4A-diH9JRT_JNSo45afr6qaJMTk2emZnIG6WdTPSj_wTBdWZ5TI-93uk4HcTBFGBXGZw06uDrOo6ADDOtTbRI3IrAxiXcg47zjpIvVco9en-vU6Y2GSmA7KMTGzqoxhU2xvntvGvcsd3j6UfYlDlsB9lZ3yfnaejR4kcfA-62fJgCgI64sqi540dmDh3h8T8Mmmo0keHfU_OKKtmdOOz4HH1ZaAriSVSOD8Y9ZLqjsyzR1UOeBklI1bkom3sjsjAHjFCDLuyFOPP4I3Y547WZ1AiJBbK3jpEHOp96_ShDXRTxRkLXw2ze0gO7bjaoQ
 
 # POST Users Login
 POST {{Web_HostAddress}}/api/Users/Login
@@ -16,13 +16,16 @@ Content-Type: application/json
 
 ###
 
+###
+
 # Post Candidates
 POST {{Web_HostAddress}}/api/Candidates
 Content-Type: application/json
+Authorization: Bearer {{BearerToken}}
 
 // CreateOrUpdateCandidateCommand
 {
-  "firstName": "John",
+  "firstName": "Jhn",
   "lastName": "Doe",
   "phoneNumber": "+1234567890",
   "email": "john.doe@example.com",
@@ -35,12 +38,14 @@ Content-Type: application/json
   "gitHubUrl": "https://github.com/johndoe",
   "comment": "Experienced software developer"
 }
+
 ###
 
 # GET Candidates with pagination
 @PageNumber1 = 1
 @PageSize1 = 10
 GET {{Web_HostAddress}}/api/Candidates?PageNumber={{PageNumber1}}&PageSize={{PageSize1}}
+Authorization: Bearer {{BearerToken}}
 
 ###
 
