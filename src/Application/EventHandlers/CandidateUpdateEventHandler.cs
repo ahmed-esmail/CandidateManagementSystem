@@ -3,11 +3,11 @@ using Microsoft.Extensions.Logging;
 
 namespace CandidateManagementSystem.Application.EventHandlers;
 
-public class CandidateCreatedEventHandler
+public class CandidateUpdateEventHandler
 {
-    private readonly ILogger<CandidateCreatedEventHandler> _logger;
+    private readonly ILogger<CandidateUpdateEventHandler> _logger;
 
-    public CandidateCreatedEventHandler(ILogger<CandidateCreatedEventHandler> logger)
+    public CandidateUpdateEventHandler(ILogger<CandidateUpdateEventHandler> logger)
     {
         _logger = logger;
     }
