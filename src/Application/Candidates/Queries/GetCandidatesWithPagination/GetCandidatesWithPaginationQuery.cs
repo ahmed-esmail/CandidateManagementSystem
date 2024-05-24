@@ -15,18 +15,18 @@ public record GetCandidatesWithPaginationQuery : IRequest<PaginatedList<Candidat
 /// </summary>
 public class GetCandidatesQueryWithPaginationHandler : IRequestHandler<GetCandidatesWithPaginationQuery, PaginatedList<CandidateDto>>
 {
-    private readonly IApplicationDbContext _context;
+    private readonly ICandidateRepository _repository;
     private readonly IMapper _mapper;
 
     /// <summary>
     /// Initializes a new instance of the GetCandidatesQueryHandler class.
     /// </summary>
-    /// <param name="context">An instance of ICandidateRepository to interact with the candidates data.</param>
     /// <param name="mapper"></param>
-    public GetCandidatesQueryWithPaginationHandler(IApplicationDbContext context, IMapper mapper)
+    /// <param name="repository"></param>
+    public GetCandidatesQueryWithPaginationHandler(IMapper mapper, ICandidateRepository repository)
     {
-        this._context = context;
         this._mapper = mapper;
+        _repository = repository;
     }
 
     /// <summary>
@@ -37,7 +37,6 @@ public class GetCandidatesQueryWithPaginationHandler : IRequestHandler<GetCandid
     /// <returns>A task that represents the asynchronous operation. The task result contains a List of Candidate.</returns>
     public Task<PaginatedList<CandidateDto>> Handle(GetCandidatesWithPaginationQuery request, CancellationToken cancellationToken)
     {
-        return _context.Candidates.ProjectTo<CandidateDto>(_mapper.ConfigurationProvider)
-                                   .PaginatedListAsync(request.PageNumber, request.PageSize);
+        return _repository.GetListAsyncWithPagination(request, cancellationToken);
     }
 }

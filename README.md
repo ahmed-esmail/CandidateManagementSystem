@@ -94,6 +94,10 @@ several HTTP requests for testing our API. Here's a brief overview:
 2. **Caching**: Introduce in-memory or distributed caching to enhance performance.
 3. **Testing**: Increase test coverage with integration and end-to-end tests.
 4. **Deployment**: set up CI/CD pipelines for automated deployments.
+5. **Logging**: Implement structured logging to capture application events and errors.
+6. **Monitoring**: Integrate application monitoring tools to track performance and usage metrics.
+7. **Error Handling**: Implement a consistent error handling strategy across the application.
+
 
 ## Build
 

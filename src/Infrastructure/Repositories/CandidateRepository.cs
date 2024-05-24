@@ -1,4 +1,10 @@
-﻿using CandidateManagementSystem.Application.Common.Interfaces;
+﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
+using CandidateManagementSystem.Application.Candidates;
+using CandidateManagementSystem.Application.Candidates.Queries.GetCandidatesWithPagination;
+using CandidateManagementSystem.Application.Common.Interfaces;
+using CandidateManagementSystem.Application.Common.Mappings;
+using CandidateManagementSystem.Application.Common.Models;
 using CandidateManagementSystem.Domain.Entities.Candidates;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,14 +16,17 @@ namespace CandidateManagementSystem.Infrastructure.Repositories;
 public class CandidateRepository : ICandidateRepository
 {
     private readonly IApplicationDbContext _context;
+    private readonly IMapper _mapper;
 
     /// <summary>
     /// Initializes a new instance of the CandidateRepository class.
     /// </summary>
     /// <param name="context">The application's database context.</param>
-    public CandidateRepository(IApplicationDbContext context)
+    /// <param name="mapper"></param>
+    public CandidateRepository(IApplicationDbContext context, IMapper mapper)
     {
         _context = context;
+        _mapper = mapper;
     }
 
     /// <summary>
@@ -59,13 +68,12 @@ public class CandidateRepository : ICandidateRepository
         await _context.SaveChangesAsync(cancellationToken);
     }
 
-    /// <summary>
-    /// Retrieves a list of all candidates in the database.
-    /// </summary>
-    /// <param name="cancellationToken">A CancellationToken to observe while waiting for the task to complete.</param>
-    /// <returns>A list of all candidates in the database.</returns>
-    public Task<List<Candidate>> GetListAsync(CancellationToken cancellationToken = default)
+    public async Task<PaginatedList<CandidateDto>> GetListAsyncWithPagination(GetCandidatesWithPaginationQuery request,
+        CancellationToken cancellationToken = default)
     {
-        return _context.Candidates.ToListAsync(cancellationToken);
+        return await _context.Candidates
+            .ProjectTo<CandidateDto>(_mapper.ConfigurationProvider)
+            .PaginatedListAsync(request.PageNumber, request.PageSize);
     }
+    
 }

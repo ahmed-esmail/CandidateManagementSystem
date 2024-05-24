@@ -1,4 +1,6 @@
-﻿using CandidateManagementSystem.Application.Common.Interfaces;
+﻿using CandidateManagementSystem.Application.Candidates;
+using CandidateManagementSystem.Application.Common;
+using CandidateManagementSystem.Application.Common.Interfaces;
 using CandidateManagementSystem.Domain.Constants;
 using CandidateManagementSystem.Domain.Entities.Candidates;
 using CandidateManagementSystem.Infrastructure.Data;

@@ -1,4 +1,5 @@
-﻿using CandidateManagementSystem.Application.Common.Models;
+﻿using CandidateManagementSystem.Application.Common;
+using CandidateManagementSystem.Application.Common.Models;
 using CandidateManagementSystem.Domain.Entities.Candidates;
 using CandidateManagementSystem.Domain.Events;
 
