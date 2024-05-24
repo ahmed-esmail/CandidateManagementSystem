@@ -4,14 +4,14 @@ namespace CandidateManagementSystem.Application.Candidates.Queries.GetCandidates
 
 public class CandidateDto
 {
-    public string Email { get; } = null!;
-    public string FirstName { get; private set; } = null!;
-    public string LastName { get; private set; } = null!;
-    public string? PhoneNumber { get; private set; }
-    public TimeSlot? BestTimeToCall { get; private set; }
-    public string? LinkedInProfileUrl { get; private set; }
-    public string? GitHubProfileUrl { get; private set; }
-    public string Comment { get; private set; } = null!;
+    public string Email { get; init; } = null!;
+    public string FirstName { get; init; } = null!;
+    public string LastName { get; init; } = null!;
+    public string? PhoneNumber { get; init; }
+    public TimeSlot? BestTimeToCall { get; init; }
+    public string? LinkedInProfileUrl { get; init; }
+    public string? GitHubProfileUrl { get; init; }
+    public string Comment { get; init; } = null!;
     
     private class Mapping : Profile
     {
